@@ -1,32 +1,37 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Toolbar />
+    <router-view />
+    <Footer />
   </div>
 </template>
-
+<script>
+import Toolbar from "@/components/Toolbar";
+import Footer from "@/components/Footer";
+import AOS from "aos";
+import "aos/src/sass/aos.scss";
+export default {
+  components: {
+    Toolbar,
+    Footer,
+  },
+  created() {
+    AOS.init({ offset: 0, startEvent: "load", duration: 1500 });
+  },
+};
+</script>
+<style lang="sass">
+$aos-distance: 40px;
+@import 'aos/src/sass/aos.scss';
+</style>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  background: rgb(3, 3, 4);
+  background: linear-gradient(
+    323deg,
+    rgba(3, 3, 4, 1) 0%,
+    #151718 49%,
+    rgba(40, 46, 50, 1) 100%
+  );
 }
 </style>
